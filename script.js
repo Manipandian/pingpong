@@ -1,20 +1,18 @@
 const svg = document.querySelector(".main-svg-rect");
-
 const tableRect = document.querySelector(".svg-rect");
 const firstPlayer = document.getElementById("player1");
 const secondPlayer = document.getElementById("player2");
 const playBall = document.getElementById("ball");
 let tableHeight = tableRect.height.baseVal.value;
-
 let tableWidth = tableHeight * 1.5;
 svg.setAttribute("width", tableWidth);
 // tableRect.setAttribute('stroke-dasharray', `${tableWidth}, 72vh`);
 let tablePositionX = tableRect.x.baseVal.value;
-console.log("rectwidth", tableRect.width.baseVal.value);
+// console.log("rectwidth", tableRect.width.baseVal.value);
 let batHeight = firstPlayer.height.baseVal.value;
 
 let servePlayer1 = true;
-console.log(tableHeight, tableWidth, batHeight);
+// console.log(tableHeight, tableWidth, batHeight);
 
 function fixInitialValue() {
   tableHeight = tableRect.height.baseVal.value;
@@ -27,19 +25,7 @@ function fixInitialValue() {
 }
 fixInitialValue();
 
-document.addEventListener("keydown", (event) => {
-  console.log(event.code);
-  if (event.code === "Enter") {
-    playBall.style.display = "block";
-    playBall.setAttribute("cy", tableHeight / 2);
-    firstPlayer.setAttribute("y", "40%");
-    secondPlayer.setAttribute("y", "40%");
-    startGame();
-  }
-  makeBatMovement(event);
-});
-
-function startGame() {
+function makeBallMovement() {
   let yMovement = 0;
   let currentXPosition = Number(playBall.getAttribute("cx"));
   let currentYPosition = Number(playBall.getAttribute("cy"));
@@ -54,7 +40,7 @@ function startGame() {
         playBall.setAttribute("cy", currentYPosition);
       } else {
         let batLocation = secondPlayer.y.baseVal.value;
-        console.log(secondPlayer.y);
+        // console.log(secondPlayer.y);
         let ballLocation = playBall.cy.baseVal.value;
         if (
           ballLocation >= batLocation &&
@@ -114,7 +100,7 @@ function makeBatMovement(event) {
     (event.code === "ArrowUp" || event.code === "KeyW")
   ) {
     currentPlayer.setAttribute("y", initPosition - batPitch);
-    console.log(initPosition);
+    // console.log(initPosition);
   } else if (
     initPosition + batHeight <= tableHeight &&
     (event.code === "ArrowDown" || event.code === "KeyS")
@@ -122,3 +108,15 @@ function makeBatMovement(event) {
     currentPlayer.setAttribute("y", initPosition + batPitch);
   }
 }
+
+document.addEventListener("keydown", (event) => {
+    // console.log(event.code);
+    if (event.code === "Enter" && playBall.style.display !== "block") {
+      playBall.style.display = "block";
+      playBall.setAttribute("cy", tableHeight / 2);
+      firstPlayer.setAttribute("y", "40%");
+      secondPlayer.setAttribute("y", "40%");
+      makeBallMovement();
+    }
+    makeBatMovement(event);
+  });
