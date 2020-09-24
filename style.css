@@ -1,0 +1,37 @@
+body {
+    /* margin: 10% 20%; */
+}
+
+.title {
+    margin: 0;
+    height: 20vh;
+}
+.main-container {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-container {
+    /* background-color: black;
+    height: 400px;
+    width: 600px;
+    border:1px solid blueviolet;
+    border-width: 20px 1px; */
+}
+
+.svg-rect {
+    fill:black;
+    stroke-width:20;
+    stroke: greenyellow;
+    /* stroke-dasharray: 600,72vh */
+}
+
+.ping-bat {
+    fill: honeydew;
+    stroke-width: 5;
+    stroke: aquamarine;
+    transition: 250ms linear;
+}

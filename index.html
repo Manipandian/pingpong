@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <h1 class="title">Ping pong</h1>
+      <svg class="main-svg-rect" width="622" height="80vh">
+        <rect width="100%" class="svg-rect" height="100%"/>
+        <rect width="10" id="player1" class="ping-bat" height="16vh" x="10" y="40%"/>
+        <rect width="10" id="player2" class="ping-bat" height="16vh" x="590" y="40%"/>
+        <circle id="ball" cx="30" cy="50%" r="10" stroke="black" stroke-width="3" fill="red" />
+        <!-- <animate 
+            xlink:href="#ball"
+            attributeName="cx"
+            from="30"
+            to="570" 
+            dur="1s"
+            begin="click"
+            fill="freeze" /> -->
+      </svg>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
